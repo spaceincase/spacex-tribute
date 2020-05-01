@@ -1,0 +1,15 @@
+<%- include('partials/head'); %>
+<%- include('partials/navbar'); %>
+<header>
+  <h1>Gallery</h1>
+</header>
+<section id="gallery">
+  <% data.forEach(photo => { %>
+    <img src="<%= photo %>" alt="" class="photo">
+  <% }); %>
+</section>
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+<%- include('partials/foot'); %>
