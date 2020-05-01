@@ -70,7 +70,7 @@ header {
   margin-top: 5rem;
 }
 
-header h1 {
+header h1, p {
   font-weight: normal;
   text-align: center;
 }
@@ -80,7 +80,7 @@ header h1 {
   #gallery {
     width: 90%;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 1rem;
     line-height: 0;
     -webkit-column-count: 5;
     -webkit-column-gap:   0px;
@@ -99,7 +99,7 @@ header h1 {
   #gallery {
     width: 90%;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 1rem;
     line-height: 0;
     -webkit-column-count: 2;
     -webkit-column-gap:   0px;
