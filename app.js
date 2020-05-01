@@ -22,9 +22,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/', rockets);
-app.use('/', capsules);
-app.use('/', missions);
+app.use('/rockets', rockets);
+app.use('/capsules', capsules);
+app.use('/missions', missions);
 
 
 // catch 404 and forward to error handler

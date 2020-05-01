@@ -3,9 +3,20 @@ var router = express.Router();
 const axios = require('axios');
 
 const SPACEXAPI = 'https://api.spacexdata.com/v3/';
-const FLICKRAPI = 'https://api.flickr.com/services/rest/';
-const GETPHOTOS = '?method=flickr.people.getPublicPhotos&api_key=531e9c9800721cc6faf9fb9ec4cc9dfe&user_id=130608600%40N05&per_page=200 &format=json&nojsoncallback=1'
+const flickrParams = {
+  params: {
+    method: "flickr.people.getPublicPhotos",
+    api_key: '531e9c9800721cc6faf9fb9ec4cc9dfe',
+    user_id: '130608600@N05',
+    per_page: 200,
+    format: "json",
+    nojsoncallback: 1
+  }
+}
 
+const flickr = axios.create({
+  baseURL: 'https://api.flickr.com/services/rest/',
+});
 
 // GET home page.
 router.get('/', function(req, res, next) {
@@ -15,7 +26,7 @@ router.get('/', function(req, res, next) {
 // GET gallery page.
 router.get('/gallery', function(req, res, next) {
   let data = [];
-  axios.get(`${FLICKRAPI}${GETPHOTOS}`)
+  flickr('/', flickrParams)
     .then(response => {
       response.data.photos.photo.forEach(photo => {
         data.push(buildFlickrURL(photo.farm, photo.server, photo.id, photo.secret))
@@ -24,7 +35,7 @@ router.get('/gallery', function(req, res, next) {
     })
     .catch(error => {
       console.log(error);
-    })
+    });
 });
 
 // GET about page.
