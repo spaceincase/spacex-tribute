@@ -1,8 +1,15 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
+const spacexapi = require('../controllers/SpaceX.js');
 
-const SPACEXAPI = 'https://api.spacexdata.com/v3/';
+
+// Set flickr API endpoint
+const flickr = axios.create({
+  baseURL: 'https://api.flickr.com/services/rest/',
+});
+
+// flickr params for spaceX photos
 const flickrParams = {
   params: {
     method: "flickr.people.getPublicPhotos",
@@ -14,24 +21,26 @@ const flickrParams = {
   }
 }
 
-const flickr = axios.create({
-  baseURL: 'https://api.flickr.com/services/rest/',
-});
 
 // GET home page.
 router.get('/', function(req, res, next) {
-  res.render('index');
+  spacexapi.buildNav().then(data => {
+    res.render('index', {data: data})
+  })
 });
 
 // GET gallery page.
 router.get('/gallery', function(req, res, next) {
-  let data = [];
+  let pics = [];
   flickr('/', flickrParams)
     .then(response => {
       response.data.photos.photo.forEach(photo => {
-        data.push(buildFlickrURL(photo.farm, photo.server, photo.id, photo.secret))
+        pics.push(buildFlickrURL(photo.farm, photo.server, photo.id, photo.secret))
       })
-      res.render('gallery', {data: data})
+      spacexapi.buildNav().then(data => {
+        res.render('gallery', {pics: pics, data: data})
+      })
+
     })
     .catch(error => {
       console.log(error);
@@ -40,14 +49,19 @@ router.get('/gallery', function(req, res, next) {
 
 // GET about page.
 router.get('/about', function(req, res, next) {
-  res.render('about');
+  spacexapi.buildNav().then(data => {
+    res.render('about', {data: data})
+  })
 });
 
 // GET history page.
 router.get('/history', function(req, res, next) {
-  res.render('history');
+  spacexapi.buildNav().then(data => {
+    res.render('history', {data: data})
+  })
 });
 
+// Build usable flickr api url
 function buildFlickrURL(farmID, serverID, id, secret) {
   return `https://farm${farmID}.staticflickr.com/${serverID}/${id}_${secret}.jpg`
 }

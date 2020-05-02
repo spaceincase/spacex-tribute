@@ -4,15 +4,19 @@
     <li><a class="navbtn" href="/">Home</a></li>
     <li class="dropdown">
       <a class="navbtn" href="/rockets">Rockets</a>
-      <ul class="dropdown-content">
-
-      </ul>
+      <div class="dropdown-content">
+        <% Array.from(data.rockets).forEach(rocket => { %>
+            <a class="navbtn" href="/rockets/<%= rocket.id %>"><%= rocket.rocket_name %></a>
+        <% }); %>
+      </div>
     </li>
     <li class="dropdown">
       <a class="navbtn" href="/capsules">Capsules</a>
-      <ul class="dropdown-content">
-
-      </ul>
+      <div class="dropdown-content">
+        <% Array.from(data.capsules).forEach(capsule => { %>
+            <a class="navbtn" href="/capsules/<%= capsule.id %>"><%= capsule.capsule_serial %></a>
+        <% }); %>
+      </div>
     </li>
     <li class="dropdown">
       <a class="navbtn" href="/missions">Missions</a>
