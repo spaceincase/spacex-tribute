@@ -1,7 +1,38 @@
-header img {
+@media only screen and (max-width: 700px) {
+  figure img {
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+
+  figure {
+    width: 90%;s
+  }
+
+  figcaption {
+    font-size: 0.75rem;
+  }
+
+
+}
+
+@media only screen and (min-width: 700px) {
+  figure img {
+    max-height: 80vh;
+  }
+
+  figure {
+    max-width: 120vh;
+  }
+
+  figcaption {
+    text-align: justify;
+  }
+
+}
+
+figure img {
   margin: 0;
   padding: 0;
-  max-height: 80vh;
 }
 
 header {
@@ -15,4 +46,23 @@ header {
   -ms-flex-direction: column;
   justify-content: center;
   flex-direction: column;
+}
+
+#stats {
+  width: 20rem;
+  height: 10rem;
+  margin: 2rem auto;
+  border: solid black 1px;
+}
+
+figure {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+
 }

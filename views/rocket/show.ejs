@@ -2,14 +2,15 @@
 <%- include('../partials/navbar'); %>
 <header>
   <h1><%= rocket.rocket_name %></h1>
-  <img src="<%= rocket.flickr_images[1] %>" alt="">
-  <p>since <%= rocket.first_flight %></p>
-  <p><%= rocket.description %></p>
+  <figure>
+    <img src="<%= rocket.flickr_images[1] %>" alt="">
+    <figcaption><%= rocket.description %></figcaption>
+  </figure>
 </header>
 <section id="stats">
   <p>Stages: <%= rocket.stages %></p>
   <p>Boosters: <%= rocket.boosters %></p>
-  <p>Cost Per Launch: <%= rocket.cost_per_launch %></p>
-  <p>Success Rate: <%= rocket.success_rate_pct %></p>
+  <p>Cost Per Launch: $<%= rocket.cost_per_launch %>.00</p>
+  <p>Success Rate: <%= rocket.success_rate_pct %>%</p>
 </section>
 <%- include('../partials/foot'); %>
