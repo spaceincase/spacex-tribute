@@ -1,4 +1,9 @@
 ul {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
   width: 100%;
   list-style-type: none;
 }

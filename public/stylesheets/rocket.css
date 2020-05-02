@@ -1,0 +1,18 @@
+header img {
+  margin: 0;
+  padding: 0;
+  max-height: 80vh;
+}
+
+header {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
+}

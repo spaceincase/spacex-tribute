@@ -1,4 +1,4 @@
-<%- include('../partials/head'); %>
+<%- include('../partials/head', {style: '/stylesheets/rocket.css'}); %>
 <%- include('../partials/navbar'); %>
 <header>
   <h1><%= rocket.rocket_name %></h1>
@@ -7,9 +7,9 @@
   <p><%= rocket.description %></p>
 </header>
 <section id="stats">
-  <h2>Stages: <%= rocket.stages %></h2>
-  <h2>Boosters: <%= rocket.boosters %></h2>
-  <h2>Cost Per Launch: <%= rocket.cost_per_launch %></h2>
-  <h2>Success Rate: <%= rocket.success_rate_pct %></h2>
+  <p>Stages: <%= rocket.stages %></p>
+  <p>Boosters: <%= rocket.boosters %></p>
+  <p>Cost Per Launch: <%= rocket.cost_per_launch %></p>
+  <p>Success Rate: <%= rocket.success_rate_pct %></p>
 </section>
 <%- include('../partials/foot'); %>
