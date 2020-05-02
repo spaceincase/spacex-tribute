@@ -1,0 +1,14 @@
+ul {
+  width: 100%;
+  list-style-type: none;
+}
+
+section li {
+  padding: 1rem;
+  margin: 1rem;
+
+}
+
+img {
+  width: 10rem;
+}

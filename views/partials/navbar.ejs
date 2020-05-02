@@ -14,7 +14,7 @@
       <a class="navbtn" href="/capsules">Capsules</a>
       <div class="dropdown-content">
         <% Array.from(data.capsules).forEach(capsule => { %>
-            <a class="navbtn" href="/capsules/<%= capsule.id %>"><%= capsule.capsule_serial %></a>
+            <a class="navbtn" href="/capsules/<%= capsule.capsule_serial %>"><%= capsule.capsule_serial %></a>
         <% }); %>
       </div>
     </li>

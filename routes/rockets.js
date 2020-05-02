@@ -9,4 +9,12 @@ router.get('/', function(req, res, next) {
   })
 });
 
+// GET single rocket.
+router.get('/:id', (req, res) => {
+  spacexapi.buildNav().then(data => {
+    rocket = data.rockets.find(rocket => rocket.id == req.params.id)
+    res.render('rocket/show', {data: data, rocket: rocket})
+  })
+})
+
 module.exports = router;

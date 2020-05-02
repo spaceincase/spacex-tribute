@@ -1,6 +1,9 @@
-<%- include('partials/head'); %>
+<%- include('partials/head', {style: '/stylesheets/rockets.css'}); %>
 <%- include('partials/navbar'); %>
 <header>
   <h1>Rockets</h1>
 </header>
+<section>
+  <%- include('rocket/listshow', {rockets: data.rockets}) %>
+</section>
 <%- include('partials/foot'); %>

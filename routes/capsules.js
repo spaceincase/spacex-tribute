@@ -10,4 +10,13 @@ router.get('/', function(req, res, next) {
   })
 });
 
+// GET single capsule
+router.get('/:id', (req, res) => {
+  spacexapi.buildNav().then(data => {
+    capsule = data.capsules.find(capsule => capsule.capsule_serial == req.params.id)
+    console.log(capsule);
+    res.render('capsule/show', {data: data, capsule: capsule})
+  })
+})
+
 module.exports = router;
