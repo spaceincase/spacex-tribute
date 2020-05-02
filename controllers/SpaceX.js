@@ -15,6 +15,10 @@ function getCapsules() {
   return spaceX.get('/capsules');
 }
 
+function getStarman() {
+  return spaceX.get('/roadster');
+}
+
 // Parse rocket and capsule data into single object
 function buildNav() {
   return axios.all([getRockets(), getCapsules()])
@@ -36,3 +40,4 @@ function buildNav() {
 exports.buildNav = buildNav;
 exports.getRockets = getRockets;
 exports.getCapsules = getCapsules;
+exports.getStarman = getStarman;

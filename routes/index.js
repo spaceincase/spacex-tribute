@@ -25,7 +25,9 @@ const flickrParams = {
 // GET home page.
 router.get('/', function(req, res, next) {
   spacexapi.buildNav().then(data => {
-    res.render('index', {data: data})
+    spacexapi.getStarman().then(response => {
+      res.render('index', {data: data, starman: response.data})
+    })
   })
 });
 

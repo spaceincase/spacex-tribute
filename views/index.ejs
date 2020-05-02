@@ -6,5 +6,10 @@
       <iframe frameborder="0" height="100%" width="100%" src="https://youtube.com/embed/A0FZIwabctw?wmode=transparent&start=16&mute=1&autoplay=1&loop=1&controls=0&modestbranding=1&fs=0&autohide=1&playlist=A0FZIwabctw&iv_load_policy=3"></iframe>
     </div>
     <div class="video-overlay"></div>
+    <div class="starman">
+      <h3>Starman Stats</h3>
+      <p>Speed: <%= Math.trunc(starman.speed_kph) %>km/h</p>
+      <p>Distance from Earth: <%= Math.trunc(starman.earth_distance_km) %>km</p>
+    </div>
   </header>
 <%- include('partials/foot'); %>
