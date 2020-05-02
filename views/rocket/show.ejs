@@ -10,7 +10,7 @@
 <section id="stats">
   <p>Stages: <%= rocket.stages %></p>
   <p>Boosters: <%= rocket.boosters %></p>
-  <p>Cost Per Launch: $<%= rocket.cost_per_launch %>.00</p>
+  <p>Cost Per Launch: $<%= rocket.cost_per_launch / 1000000 %>M</p>
   <p>Success Rate: <%= rocket.success_rate_pct %>%</p>
 </section>
 <%- include('../partials/foot'); %>
