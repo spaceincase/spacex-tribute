@@ -1,71 +1,37 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
-const spacexapi = require('../controllers/SpaceX.js');
+const spacex = require('../controllers/spacex');
+const flickr = require('../controllers/flickr')
 
-
-// Set flickr API endpoint
-const flickr = axios.create({
-  baseURL: 'https://api.flickr.com/services/rest/',
-});
-
-// flickr params for spaceX photos
-const flickrParams = {
-  params: {
-    method: "flickr.people.getPublicPhotos",
-    api_key: '531e9c9800721cc6faf9fb9ec4cc9dfe',
-    user_id: '130608600@N05',
-    per_page: 200,
-    format: "json",
-    nojsoncallback: 1
-  }
-}
 
 
 // GET home page.
-router.get('/', function(req, res, next) {
-  spacexapi.buildNav().then(data => {
-    spacexapi.getStarman().then(response => {
-      res.render('index', {data: data, starman: response.data})
-    })
-  })
+router.get('/', async function(req, res, next) {
+  let starman = await spacex.checkCache('roadster');
+  let nav = await spacex.getNav();
+  res.render('index', {nav: nav, starman: starman});
 });
 
 // GET gallery page.
-router.get('/gallery', function(req, res, next) {
-  let pics = [];
-  flickr('/', flickrParams)
-    .then(response => {
-      response.data.photos.photo.forEach(photo => {
-        pics.push(buildFlickrURL(photo.farm, photo.server, photo.id, photo.secret))
-      })
-      spacexapi.buildNav().then(data => {
-        res.render('gallery', {pics: pics, data: data})
-      })
-
-    })
-    .catch(error => {
-      console.log(error);
-    });
+router.get('/gallery', async function(req, res, next) {
+  let pics = await flickr.checkCache();
+  let nav = await spacex.getNav();
+  res.render('gallery', {pics:pics, nav:nav})
 });
 
 // GET about page.
-router.get('/about', function(req, res, next) {
-  spacexapi.buildNav().then(data => {
-    res.render('about', {data: data})
-  })
+router.get('/about', async function(req, res, next) {
+  let nav = await spacex.getNav();
+  let info = await spacex.checkCache('info');
+  res.render('about', {nav:nav, info:info})
 });
 
 // GET history page.
-router.get('/history', function(req, res, next) {
-  spacexapi.buildNav().then(data => {
-    res.render('history', {data: data})
-  })
+router.get('/history', async function(req, res, next) {
+  let nav = await spacex.getNav();
+  let history = await spacex.checkCache('history');
 });
 
-// Build usable flickr api url
-function buildFlickrURL(farmID, serverID, id, secret) {
-  return `https://farm${farmID}.staticflickr.com/${serverID}/${id}_${secret}.jpg`
-}
 
 module.exports = router;

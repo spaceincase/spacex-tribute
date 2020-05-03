@@ -7,7 +7,9 @@
 </header>
 <section id="gallery">
   <% pics.forEach(photo => { %>
-    <img src="<%= photo %>" alt="" class="photo">
+      <div class="photoContainer">
+        <img src="<%= photo %>" alt="" class="photo">
+      </div>
   <% }); %>
 </section>
 <div id="myModal" class="modal">

@@ -5,16 +5,16 @@
     <li class="dropdown">
       <a class="navbtn" href="/rockets">Rockets</a>
       <div class="dropdown-content">
-        <% Array.from(data.rockets).forEach(rocket => { %>
-            <a class="navbtn" href="/rockets/<%= rocket.id %>"><%= rocket.rocket_name %></a>
+        <% nav.rockets.forEach(rocket => { %>
+            <a class="navbtn" href="/rockets/<%= rocket.id %>"><%= rocket.name %></a>
         <% }); %>
       </div>
     </li>
     <li class="dropdown">
       <a class="navbtn" href="/capsules">Capsules</a>
       <div class="dropdown-content">
-        <% Array.from(data.capsules).forEach(capsule => { %>
-            <a class="navbtn" href="/capsules/<%= capsule.capsule_serial %>"><%= capsule.capsule_serial %></a>
+        <% Array.from(nav.capsules).forEach(capsule => { %>
+            <a class="navbtn" href="/capsules/<%= capsule %>"><%= capsule %></a>
         <% }); %>
       </div>
     </li>
