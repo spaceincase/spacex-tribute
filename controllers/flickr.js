@@ -19,7 +19,7 @@ async function checkCache() {
 //Gets photos from api and adds to redis cache
 async function setCache() {
   let photos = await createPhotoArray();
-  await setAsync('photos', 10, JSON.stringify(photos))
+  await setAsync('photos', 3000, JSON.stringify(photos))
     .catch(console.error);
   return photos;
 }
