@@ -54,10 +54,6 @@
     opacity: 0.8;
   }
 
-  #burger:hover {
-    background-color: grey;
-  }
-
   footer {
     display: none !important;
   }
