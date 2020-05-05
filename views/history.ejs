@@ -1,6 +1,19 @@
-<%- include('partials/head'); %>
+<%- include('partials/head', {style: '/stylesheets/history.css'}); %>
 <%- include('partials/navbar'); %>
 <header>
   <h1>History</h1>
 </header>
+<section id="articles" >
+  <% history.forEach(event => { %>
+    <article>
+      <h2><%= event.title %></h2>
+      <p><%= event.event_date_utc %></p>
+      <p>Flight # <%= event.flight_number %></p>
+      <hr>
+      <h3>Details</h3>
+      <p class="details"><%= event.details %></p>
+      <a class="navbtn abtn" href="<%= event.links.article %>">Read More</a>
+    </article>
+  <% }); %>
+</section>
 <%- include('partials/foot'); %>

@@ -1,0 +1,106 @@
+@media screen and (max-width: 600px) {
+  .header-img {
+    width: 15rem;
+    padding-left: 2rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .header-img {
+    width: 20rem;
+    padding-left: 4rem;
+  }
+}
+
+
+header {
+  width: 100%;
+  background-color: rgba(255,255,255,0.7);
+}
+
+body {
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(255,255,255,0.2)), url('/images/background.jpg');
+  background-attachment: fixed;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-img {
+  display: block;
+  box-sizing: content-box;
+  margin: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.header-text {
+  text-align: center;
+  color: #005288;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: lighter;
+  font-style: italic;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  flex-grow: 2;
+}
+
+section {
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  background-color: rgba(43,48,58,0.98);
+}
+
+section:nth-child(even) {
+  background-color: rgba(43,48,58,0.8);
+}
+
+.container {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-container {
+  padding: 1rem;
+  color: var(--secondary-grey);
+}
+
+.countdown-container {
+  text-align: center;
+  color: var(--secondary-grey);
+}
+
+.mission-badge {
+  width: 10rem;
+}
+
+#timer {
+  padding-bottom: 2rem;
+}
+
+#starman .description {
+  margin: auto;
+  max-width: 600px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--secondary-grey);
+}
+
+.btn {
+  text-decoration: none;
+  color: var(--secondary-grey);
+  padding: 0.5rem;
+  border: solid var(--primary-grey) 1px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: var(--primary-blue);
+  border: none;
+}

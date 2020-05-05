@@ -26,16 +26,16 @@ async function setCache(key) {
 
 async function getNav() {
   let rockets = await checkCache('rockets');
-  let capsules = await checkCache('capsules');
+  let launches = await checkCache('launches');
   rockets = rockets.map(rocket => {
     return {id: rocket.id, name: rocket.rocket_name}
   });
-  capsules = capsules.map(capsule => {
-    return capsule.capsule_serial
+  launches = launches.map(launch => {
+    return launch.mission_name
   });
   return {
     rockets: rockets,
-    capsules: capsules
+    launches: launches
   };
 }
 

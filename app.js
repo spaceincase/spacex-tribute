@@ -3,11 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let spacex = require('./controllers/spacex')
 
 var indexRouter = require('./routes/index');
 var capsules = require('./routes/capsules');
-var missions = require('./routes/missions');
-var rockets = require('./routes/rockets');
+var launches = require('./routes/launches');
+var vehicles = require('./routes/vehicles');
 
 var app = express();
 
@@ -20,11 +21,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(async (req, res, next) => {
+  try {
+    req.nav = await spacex.getNav();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.use('/', indexRouter);
-app.use('/rockets', rockets);
+app.use('/vehicles', vehicles);
 app.use('/capsules', capsules);
-app.use('/missions', missions);
+app.use('/launches', launches);
 
 
 // catch 404 and forward to error handler

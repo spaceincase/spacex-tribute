@@ -1,15 +1,70 @@
-<%- include('partials/head'); %>
+<%- include('partials/head', {style: '/stylesheets/index.css'}); %>
 <%- include('partials/navbar'); %>
-  <header id="video-header">
-    <img src="/images/logo.svg" alt="logo">
-    <div class="bg-video">
-      <iframe id="player" scrolling="no" frameborder="0" height="125%" width="125%" src="https://youtube.com/embed/A0FZIwabctw?wmode=transparent&start=16&mute=1&autoplay=1&loop=1&controls=0&modestbranding=1&fs=0&autohide=1&playlist=A0FZIwabctw&iv_load_policy=3"></iframe>
-    </div>
-    <div class="video-overlay"></div>
-    <div class="starman">
-      <h3>Starman Stats</h3>
-      <p>Speed: <%= Math.trunc(starman.speed_kph) %>km/h</p>
-      <p>Distance from Earth: <%= Math.trunc(starman.earth_distance_km) %>km</p>
+  <header>
+    <div class="sticky">
+      <img class="header-img" src="/images/logo.svg" alt="spacex logo">
     </div>
   </header>
+  <section id="next-launch">
+    <h1>Next Scheduled Launch</h1>
+    <div class="countdown-container">
+      <h2><%= nextLaunch.mission_name %></h2>
+      <img class="mission-badge" src="<%= nextLaunch.links.mission_patch %>" alt="">
+      <p><%= nextLaunch.launch_site.site_name %></p>
+      <p id="date"></p>
+      <% if(nextLaunch.rocket.first_stage.cores[0].reused) { %>
+        <p>Refurbished and Resused</p>
+      <% } %>
+      <div class="container">
+        <div class="text-container">
+          <p>Rocket: <%= nextLaunch.rocket.rocket_name %></p>
+        </div>
+        <div class="text-container">
+          <p>Block: <%= nextLaunch.rocket.first_stage.cores[0].block %></p>
+        </div>
+      </div>
+      <h3>Countdown til launch:</h3>
+      <h2 id="timer"><%= nextLaunch.launch_date_utc %></h2>
+      <a class="btn" href="/launches/<%= nextLaunch.flight_number %>">Read More</a>
+    </div>
+  </section>
+  <section id="terms">
+    <h1>Understanding Some Terms</h1>
+    <div class='container'>
+      <div class="text-container">
+        <p>LEO - Low Earth Orbit</p>
+        <p>GTO - Geostationary Transfer Orbit</p>
+        <p>CRS - Commercial Resupply Mission</p>
+        <p>ISS - International Space Station</p>
+        <p>NET - No Earlier Than</p>
+        <p>TBD - To Be Determined</p>
+        <p>HIF - Horizontal Integration Facility</p>
+        <p>CCAFS - Cape Canaveral Air Force Station</p>
+      </div>
+      <div class="text-container">
+        <p>USAF - United States Air Force</p>
+        <p>SLC - Space Launch Complex</p>
+        <p>LOx - Liquid Oxygen</p>
+        <p>RP-1 - Rocket Propellent 1 (Refined Kerosene)</p>
+        <p>kN - Kilonewton</p>
+        <p>lbf - Pounds of Force</p>
+        <p>mN - Meganewton</p>
+        <p>Isp - Specific Impulse (How efficient an engine is)</p>
+      </div>
+    </div>
+  </section>
+  <section id="starman">
+    <h1>Starman Stats</h1>
+    <div class="container">
+      <div class="text-container">
+        <p>Current Speed: <%= starman.speed_mph.toFixed(2) %></p>
+      </div>
+      <div class="text-container">
+        <p>Distance from Earth: <%= starman.earth_distance_mi.toFixed(2) %> mi</p>
+      </div>
+    </div>
+    <p class="description">Elon Musk's Tesla Roadster is an electric sports car that served as the dummy payload for the February 2018 Falcon Heavy test flight and is now an artificial satellite of the Sun. Starman, a mannequin dressed in a spacesuit, occupies the driver's seat. The car and rocket are products of Tesla and SpaceX. This 2008-model Roadster was previously used by Musk for commuting, and is the only consumer car sent into space.</p>
+  </section>
+<%- include('partials/footer'); %>
+<script src="/javascripts/index.js" charset="utf-8"></script>
 <%- include('partials/foot'); %>
