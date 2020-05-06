@@ -1,0 +1,50 @@
+.container {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  padding: 1rem;
+}
+
+.rocket-img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+p {
+  color: var(--secondary-grey);
+}
+
+#rocket-png {
+  width: 2rem;
+}
+
+.text-container {
+  flex-grow: 1;
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.text-container h1 {
+  text-align: left;
+}
+
+.status {
+  text-align: center;
+  width: 8rem;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0.25rem;
+  font-weight: bold;
+}
+
+.inactive {
+  color: red;
+  border-color: red;
+}
+
+.active {
+  color: green;
+  border-color: green;
+}

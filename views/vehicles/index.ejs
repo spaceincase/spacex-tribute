@@ -1,5 +1,74 @@
-<%- include('../partials/head'); %>
+<%- include('../partials/head', {style: '/stylesheets/vehicles.css'}); %>
 <%- include('../partials/navbar'); %>
-
+<header>
+  <img class="header-img" src="/images/logo.svg" alt="">
+</header>
+<section id="rockets">
+  <h1 class="header-text">Vehicle Archives</h1>
+  <h1>Rockets</h1>
+  <div class="container">
+    <% vehicles.rockets.forEach(rocket => { %>
+      <div class="vehicle-card">
+        <h1><%= rocket.rocket_name %></h1>
+        <img src="<%= rocket.flickr_images[0] %>" alt="<%= rocket.rocket_name %>">
+        <div class="details">
+          <% if(rocket.active) { %>
+            <p class="status active">Active</p>
+          <% } else { %>
+            <p class="status inactive">Inactive</p>
+          <% } %>
+          <p class="subtext">Cost Per Launch: $<%= rocket.cost_per_launch / 1000000 %>Mil</p>
+          <a class="btn" href="/vehicles/rockets/<%= rocket.id %>">Read More</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+<section id="dragons">
+  <h1>Dragon Capsules</h1>
+  <div class="container">
+    <% vehicles.dragons.forEach(dragon => { %>
+      <div class="vehicle-card">
+        <h1><%= dragon.name %></h1>
+        <img src="<%= dragon.flickr_images[0] %>" alt="<%= dragon.rocket_name %>">
+        <div class="details">
+          <% if(dragon.active) { %>
+            <p class="status active">Active</p>
+          <% } else { %>
+            <p class="status inactive">Inactive</p>
+          <% } %>
+          <p class="subtext">Crew Capacity: <%= dragon.crew_capacity %></p>
+          <a class="btn" href="/vehicles/dragons/<%= dragon.id %>">Read More</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
+<section id="boats">
+  <h1>Ships</h1>
+  <div class="container">
+    <% vehicles.ships.forEach(ship => { %>
+      <div class="vehicle-card">
+        <h1><%= ship.ship_name %></h1>
+        <div class="card-img">
+          <% if(ship.image) { %>
+            <img src="<%= ship.image %>" alt="">
+          <% } else { %>
+            <h1 style="padding-top:3rem">No Image Found</h1>
+          <% } %>
+        </div>
+        <div class="details">
+          <% if(ship.active) { %>
+            <p class="status active">Active</p>
+          <% } else { %>
+            <p class="status inactive">Inactive</p>
+          <% } %>
+          <p class="subtext">Type: <%= ship.ship_type %></p>
+          <a class="btn" href="/vehicles/ships/<%= ship.ship_id %>">Read More</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</section>
 <%- include('../partials/footer'); %>
 <%- include('../partials/foot'); %>

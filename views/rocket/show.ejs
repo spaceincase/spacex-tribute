@@ -1,16 +1,55 @@
 <%- include('../partials/head', {style: '/stylesheets/rocket.css'}); %>
 <%- include('../partials/navbar'); %>
 <header>
-  <h1><%= rocket.rocket_name %></h1>
-  <figure>
-    <img src="<%= rocket.flickr_images[1] %>" alt="">
-    <figcaption><%= rocket.description %></figcaption>
-  </figure>
+  <img class="header-img" src="/images/logo.svg" alt="">
 </header>
-<section id="stats">
-  <p>Stages: <%= rocket.stages %></p>
-  <p>Boosters: <%= rocket.boosters %></p>
-  <p>Cost Per Launch: $<%= rocket.cost_per_launch / 1000000 %>M</p>
-  <p>Success Rate: <%= rocket.success_rate_pct %>%</p>
+<section>
+  <div class="container">
+    <img class="rocket-img" src="<%= rocket.flickr_images[0] %>" alt="">
+    <div class="text-container">
+      <h1 style="text-align: left"><%= rocket.rocket_name %></h1>
+      <p>Stages: <%= rocket.stages %></p>
+      <p>Boosters: <%= rocket.boosters %></p>
+      <p>Cost Per Launch: $<%= rocket.cost_per_launch / 1000000 %>Mil</p>
+      <p>Success Rate: <%= rocket.success_rate_pct %>%</p>
+      <p>First Flight: <%= rocket.first_flight %></p>
+    </div>
+    <div class="text-container">
+      <h1 style="text-align: left">Dimensions</h1>
+      <p>Height: <%= rocket.height.meters %>m</p>
+      <p>Diameter: <%= rocket.diameter.meters %>m</p>
+      <p>Mass: <%= rocket.mass.kg %>kg</p>
+    </div>
+    <div class="text-container">
+      <h1 style="text-align: left">Payload Weights</h1>
+      <% rocket.payload_weights.forEach(payload => { %>
+        <p><%= payload.id.toUpperCase() %>: <%= payload.kg %>kg</p>
+      <% }); %>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="text-container">
+      <h1>First Stage</h1>
+      <% if(rocket.first_stage.reusable) { %>
+        <p class="status active">Reusable</p>
+      <% } else { %>
+        <p class="status inactive">Disposable</p>
+      <% } %>
+      <p>Engines: <%= rocket.first_stage.engines %></p>
+      <p>Fuel Capacity: <%= rocket.first_stage.fuel_amount_tons %> Tons</p>
+      <p>Burn Time: <%= rocket.first_stage.burn_time_sec %>s</p>
+      <p>Thrust(Sea Level): <%= rocket.first_stage.thrust_sea_level.kN %>kN</p>
+      <p>Thrust(Vaccum): <%= rocket.first_stage.thrust_vacuum.kN %>kN</p>
+    </div>
+    <div class="text-container">
+      <h1>Second Stage</h1>
+    </div>
+    <div class="text-container">
+      <h1>Engines</h1>
+    </div>
+    <img id="rocket-png" src="/images/<%= rocket.rocket_name %>.webp" alt="">
+  </div>
 </section>
 <%- include('../partials/foot'); %>

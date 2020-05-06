@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .header-img {
     width: 15rem;
     padding-left: 2rem;
@@ -9,12 +9,16 @@
     flex-direction: column;
   }
 
+  #terms .text-container {
+    max-width: 300px;
+  }
+
   #terms p {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 850px) {
   .header-img {
     width: 20rem;
     padding-left: 4rem;

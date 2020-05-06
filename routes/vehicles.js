@@ -3,7 +3,15 @@ var router = express.Router();
 const spacex = require('../controllers/spacex');
 
 router.get('/', async (req, res) => {
-  res.render('vehicles/index');
+  let rockets = await spacex.checkCache('rockets');
+  let dragons = await spacex.checkCache('dragons');
+  let ships = await spacex.checkCache('ships');
+  let vehicles = {
+    rockets: rockets,
+    dragons: dragons,
+    ships: ships
+  }
+  res.render('vehicles/index', {vehicles: vehicles});
 })
 
 // GET rockets page.

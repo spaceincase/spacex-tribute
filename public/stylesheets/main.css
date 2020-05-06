@@ -29,7 +29,7 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .navbar {
     top: 0;
     left: 0;
@@ -60,7 +60,7 @@
 }
 
 /* Desktop */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 850px) {
   .navbar {
     top: 25%;
     left: 0;
@@ -161,4 +161,55 @@ section h1 {
   text-align: center;
   color: var(--secondary-grey);
   font-weight: normal;
+}
+@media screen and (max-width: 850px) {
+  .header-img {
+    width: 15rem;
+    padding-left: 2rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .header-img {
+    width: 20rem;
+    padding-left: 4rem;
+  }
+}
+
+.header-img {
+  display: block;
+  box-sizing: content-box;
+  margin: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+header {
+  background-color: rgba(255,255,255,0.4);
+}
+
+body {
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(255,255,255,0.2)), url('/images/background.jpg');
+  background-attachment: fixed;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-text {
+  text-align: center;
+  color: var(--secondary-grey);
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+section {
+  width: 100%;
+  margin: auto;
+  padding: 2rem 3rem;
+  background-color: rgba(43,48,58,0.98);
+}
+
+section:nth-child(even) {
+  background-color: rgba(43,48,58,0.8);
 }
