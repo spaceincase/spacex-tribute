@@ -28,7 +28,7 @@ async function setCache() {
 async function createPhotoArray() {
   let res = await flickr.people.findByUsername({username: "official spacex photos"}).catch(console.error);
   let userid = res.body.user.id;
-  res = await flickr.people.getPublicPhotos({user_id: userid})
+  res = await flickr.people.getPublicPhotos({user_id: userid, per_page:500})
   let photos = res.body.photos.photo.map(photo => {
     return createImgUrl(photo)
   })

@@ -1,20 +1,19 @@
-<%- include('partials/head'); %>
+<%- include('partials/head', {style:'/stylesheets/gallery.css'}) %>
 <%- include('partials/navbar'); %>
 <header>
-  <h1>Gallery</h1>
-  <p>All images courtesy of SpaceX.</p>
-  <p>Flickr API</p>
+  <img class="header-img" src="/images/logo.svg" alt="spacex logo">
 </header>
-<section id="gallery">
-  <% pics.forEach(photo => { %>
-      <div class="photoContainer">
-        <img src="<%= photo %>" alt="" class="photo">
-      </div>
-  <% }); %>
+<section id="masonry-wrapper">
+  <h1>Gallery</h1>
+  <p>All photos courtesy of SpaceX</p>
+  <div class="masonry">
+    <% pics.forEach(photo => { %>
+        <div class="masonry-item">
+          <img src="<%= photo %>" alt="" class="masonry-content">
+        </div>
+    <% }); %>
+  </div>
 </section>
-<div id="myModal" class="modal">
-  <span id='close' class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
-<script src="/javascripts/modal.js" charset="utf-8"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="/javascripts/masonry.js" charset="utf-8"></script>
 <%- include('partials/foot'); %>
