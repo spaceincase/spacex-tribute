@@ -57,6 +57,10 @@
   footer {
     display: none !important;
   }
+
+  section {
+    padding: 2rem 0.5rem !important;
+  }
 }
 
 /* Desktop */

@@ -7,16 +7,18 @@
   <div class="header-container">
     <h1><%= rocket.rocket_name %></h1>
     <img class="rocket-img" src="<%= rocket.flickr_images[0] %>" alt="">
+    <p>First Flight: <%= rocket.first_flight %></p>
     <p><%= rocket.description %></p>
   </div>
-  <div class="container">
+</section>
+<section id="stats">
+  <div id="stats-container"class="container">
     <div class="text-container">
       <h1>Details</h1>
       <p>Stages: <%= rocket.stages %></p>
       <p>Boosters: <%= rocket.boosters %></p>
       <p>Cost Per Launch: $<%= rocket.cost_per_launch / 1000000 %>Mil</p>
       <p>Success Rate: <%= rocket.success_rate_pct %>%</p>
-      <p>First Flight: <%= rocket.first_flight %></p>
     </div>
     <div class="text-container">
       <h1 style="text-align: left">Dimensions</h1>
@@ -30,10 +32,6 @@
         <p><%= payload.id.toUpperCase() %>: <%= payload.kg %>kg</p>
       <% }); %>
     </div>
-  </div>
-</section>
-<section id="stats">
-  <div class="container">
     <div class="text-container">
       <h1>First Stage</h1>
       <% if(rocket.first_stage.reusable) { %>

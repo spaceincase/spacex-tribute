@@ -7,6 +7,9 @@
   .header-container {
       width: 50%;
   }
+  .text-container {
+    width: 33%;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -31,7 +34,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.5rem;
   flex-grow: 1;
 }
 
@@ -49,13 +52,15 @@ p {
 }
 
 #rocket-png {
+  box-sizing: content-box;
   width: 2rem;
   align-self: center;
+  padding-right: 0.5rem;
 }
 
 .text-container {
   flex-grow: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   padding-top: 0;
 }
 
