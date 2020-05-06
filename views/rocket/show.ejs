@@ -4,10 +4,14 @@
   <img class="header-img" src="/images/logo.svg" alt="">
 </header>
 <section>
-  <div class="container">
+  <div class="header-container">
+    <h1><%= rocket.rocket_name %></h1>
     <img class="rocket-img" src="<%= rocket.flickr_images[0] %>" alt="">
+    <p><%= rocket.description %></p>
+  </div>
+  <div class="container">
     <div class="text-container">
-      <h1 style="text-align: left"><%= rocket.rocket_name %></h1>
+      <h1>Details</h1>
       <p>Stages: <%= rocket.stages %></p>
       <p>Boosters: <%= rocket.boosters %></p>
       <p>Cost Per Launch: $<%= rocket.cost_per_launch / 1000000 %>Mil</p>
@@ -28,7 +32,7 @@
     </div>
   </div>
 </section>
-<section>
+<section id="stats">
   <div class="container">
     <div class="text-container">
       <h1>First Stage</h1>
@@ -40,16 +44,49 @@
       <p>Engines: <%= rocket.first_stage.engines %></p>
       <p>Fuel Capacity: <%= rocket.first_stage.fuel_amount_tons %> Tons</p>
       <p>Burn Time: <%= rocket.first_stage.burn_time_sec %>s</p>
-      <p>Thrust(Sea Level): <%= rocket.first_stage.thrust_sea_level.kN %>kN</p>
-      <p>Thrust(Vaccum): <%= rocket.first_stage.thrust_vacuum.kN %>kN</p>
+      <p>Thrust (Sea Level): <%= rocket.first_stage.thrust_sea_level.kN %>kN</p>
+      <p>Thrust (Vacuum): <%= rocket.first_stage.thrust_vacuum.kN %>kN</p>
     </div>
     <div class="text-container">
       <h1>Second Stage</h1>
+      <% if(rocket.second_stage.reusable) { %>
+        <p class="status active">Reusable</p>
+      <% } else { %>
+        <p class="status inactive">Disposable</p>
+        <p>Engines: <%= rocket.second_stage.engines %></p>
+        <p>Fuel Capacity: <%= rocket.second_stage.fuel_amount_tons %> Tons</p>
+        <p>Burn Time: <%= rocket.second_stage.burn_time_sec %>s</p>
+        <p>Thrust (Vacuum): <%= rocket.second_stage.thrust.kN %>kN</p>
+      <% } %>
     </div>
     <div class="text-container">
       <h1>Engines</h1>
+      <p>Number of Engines: <%= rocket.engines.number %></p>
+      <p>Type: <%= rocket.engines.type %></p>
+      <p>Version: <%= rocket.engines.version %></p>
+      <p>Layout: <%= rocket.engines.layout %></p>
+      <p>Fuel: <%= rocket.engines.propellant_1 %> + <%= rocket.engines.propellant_2 %></p>
+      <p>ISP (Sea-Level): <%= rocket.engines.isp.sea_level %>s</p>
+      <p>ISP (Vacuum): <%= rocket.engines.isp.vacuum %>s</p>
+      <p>TWR: <%= rocket.engines.thrust_to_weight %>%</p>
     </div>
-    <img id="rocket-png" src="/images/<%= rocket.rocket_name %>.webp" alt="">
+  </div>
+  <img id="rocket-png" src="/images/<%= rocket.rocket_name %>.webp" alt="">
+</section>
+<section>
+  <h1>Missions</h1>
+  <div class="container">
+    <% launches.forEach(launch => { %>
+      <% if(!launch.upcoming) { %>
+        <div class="mission-card">
+          <h1><%= launch.mission_name %></h1>
+          <img class="mission-badge" src="<%= launch.links.mission_patch %>" alt="">
+          <p><%= new Date(launch.launch_date_utc).toDateString() %></p>
+          <p><%= launch.launch_site.site_name %></p>
+          <a class="btn" href="/launches/<%= launch.flight_number %>">Read More</a>
+        </div>
+      <% } %>
+    <% }); %>
   </div>
 </section>
 <%- include('../partials/foot'); %>

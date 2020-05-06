@@ -23,8 +23,12 @@ router.get('/rockets', async (req, res) => {
 // GET single rocket.
 router.get('/rockets/:id', async (req, res) => {
   let rockets = await spacex.checkCache('rockets');
+  let launches = await spacex.checkCache('launches');
   let rocket = rockets.find(rocket => rocket.id == req.params.id)
-  res.render('rocket/show', {nav:req.nav, rocket:rocket})
+  launches = launches.filter(launch => {
+    return launch.rocket.rocket_name == rocket.rocket_name;
+  })
+  res.render('rocket/show', {nav:req.nav, rocket:rocket, launches:launches})
 })
 
 

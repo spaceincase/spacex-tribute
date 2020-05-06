@@ -1,8 +1,38 @@
+@media screen and (min-width: 850px) {
+  .header-img {
+    width: 20rem;
+    padding-left: 4rem;
+  }
+
+  .header-container {
+      width: 50%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .header-img {
+    width: 15rem;
+    padding-left: 2rem;
+  }
+
+  .container {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .header-container {
+    width: 100%;
+  }
+}
+
 .container {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 1rem;
+  flex-grow: 1;
 }
 
 .rocket-img {
@@ -10,6 +40,8 @@
   height: 10rem;
   object-fit: cover;
   border-radius: 50%;
+  -ms-align-self: center;
+  align-self: center;
 }
 
 p {
@@ -18,6 +50,7 @@ p {
 
 #rocket-png {
   width: 2rem;
+  align-self: center;
 }
 
 .text-container {
@@ -28,6 +61,12 @@ p {
 
 .text-container h1 {
   text-align: left;
+}
+
+#stats {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
 }
 
 .status {
@@ -47,4 +86,47 @@ p {
 .active {
   color: green;
   border-color: green;
+}
+.mission-badge {
+  width: 10rem;
+}
+
+.mission-card {
+  height: 350px;
+  width: 290px;
+  background-color: var(--primary-grey);
+  text-align: center;
+  position: relative;
+  align-self: center;
+  margin: 0.5rem;
+  padding: 1rem;
+  box-shadow: 1px 1px 3px var(--primary-black);
+}
+
+.mission-card p, .mission-card h1 {
+  color: var(--primary-black);
+}
+
+.btn {
+  display: block;
+  width: 7rem;
+  margin: auto;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: var(--primary-black);
+  padding: 0.5rem;
+  border: solid var(--primary-black) 1px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px grey;
+}
+
+.btn:hover {
+  background-color: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+.header-container {
+  text-align: center !important;
+  margin: auto;
 }
