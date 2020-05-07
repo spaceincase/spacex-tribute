@@ -6,7 +6,6 @@ var logger = require('morgan');
 let spacex = require('./controllers/spacex')
 
 var indexRouter = require('./routes/index');
-var capsules = require('./routes/capsules');
 var launches = require('./routes/launches');
 var vehicles = require('./routes/vehicles');
 
@@ -32,7 +31,6 @@ app.use(async (req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/vehicles', vehicles);
-app.use('/capsules', capsules);
 app.use('/launches', launches);
 
 

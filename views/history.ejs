@@ -1,19 +1,15 @@
-<%- include('partials/head', {style: '/stylesheets/history.css'}); %>
+<%- include('partials/head', {style: '/stylesheets/rocket.css'}); %>
 <%- include('partials/navbar'); %>
 <header>
-  <h1>History</h1>
+  <img class="header-img" src="/images/logo.svg" alt="spacex logo">
 </header>
-<section id="articles" >
-  <% history.forEach(event => { %>
-    <article>
-      <h2><%= event.title %></h2>
-      <p><%= event.event_date_utc %></p>
-      <p>Flight # <%= event.flight_number %></p>
-      <hr>
-      <h3>Details</h3>
-      <p class="details"><%= event.details %></p>
-      <a class="navbtn abtn" href="<%= event.links.article %>">Read More</a>
-    </article>
-  <% }); %>
-</section>
+<% history.forEach(event => { %>
+  <section>
+    <h1><%= event.title %></h2>
+    <p><%= event.event_date_utc %></p>
+    <p>Flight # <%= event.flight_number %></p>
+    <p><%= event.details %></p>
+    <a style="color: white" class="btn" href="<%= event.links.article %>">Read More</a>
+  </section>
+<% }); %>
 <%- include('partials/foot'); %>

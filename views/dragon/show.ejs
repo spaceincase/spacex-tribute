@@ -1,0 +1,56 @@
+<%- include('../partials/head', {style: '/stylesheets/rocket.css'}); %>
+<%- include('../partials/navbar'); %>
+<header>
+  <img class="header-img" src="/images/logo.svg" alt="">
+</header>
+<section>
+  <div class="header-container">
+    <h1><%= dragon.name %></h1>
+    <img class="rocket-img" src="<%= dragon.flickr_images[0] %>" alt="">
+    <p>First Flight: <%= dragon.first_flight %></p>
+    <% if(dragon.active) { %>
+      <p style="margin:auto" class="status active">Active</p>
+    <% } else { %>
+      <p style="margin:auto" class="status inactive">Inactive</p>
+    <% } %>
+    <p><%= dragon.description %></p>
+  </div>
+</section>
+<section id="stats">
+  <div id="stats-container"class="container">
+    <div class="text-container">
+      <h1>Details</h1>
+      <p>Crew Capacity: <%= dragon.crew_capacity %></p>
+      <p>Dry Mass: <%= dragon.dry_mass_kg %>kg</p>
+      <p>Height: <%= dragon.height_w_trunk.meters %>m</p>
+      <p>Diameter: <%= dragon.diameter.meters %>m</p>
+    </div>
+    <div class="text-container">
+      <h1>Thrusters</h1>
+      <div class="container">
+        <% dragon.thrusters.forEach(thruster => { %>
+          <div class="">
+            <h2><%= thruster.type %></h2>
+            <p>Amount: <%= thruster.amount %></p>
+            <p>Pods: <%= thruster.pods %></p>
+            <p>Fuel 1: <%= thruster.fuel_1 %></p>
+            <p>Fuel 2: <%= thruster.fuel_2 %></p>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+    <div class="text-container">
+
+    </div>
+    <div class="text-container">
+
+    </div>
+    <div class="text-container">
+
+    </div>
+    <div class="text-container">
+
+    </div>
+  </div>
+</section>
+<%- include('../partials/foot'); %>

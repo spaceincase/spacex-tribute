@@ -8,6 +8,11 @@
     <h1><%= rocket.rocket_name %></h1>
     <img class="rocket-img" src="<%= rocket.flickr_images[0] %>" alt="">
     <p>First Flight: <%= rocket.first_flight %></p>
+    <% if(rocket.active) { %>
+      <p style="margin:auto" class="status active">Active</p>
+    <% } else { %>
+      <p style="margin:auto" class="status inactive">Inactive</p>
+    <% } %>
     <p><%= rocket.description %></p>
   </div>
 </section>
